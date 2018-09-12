@@ -2,7 +2,6 @@ package com.example.testing.activitytest;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -11,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class FirstActivity extends AppCompatActivity {
+public class FirstActivity extends BaseActivity {
 
     private static final String TAG = "FirstActivity";
 
@@ -21,6 +20,8 @@ public class FirstActivity extends AppCompatActivity {
         setContentView(R.layout.first_layout);
 
         Log.i(TAG, "onCreate: Hi");
+        Log.d(TAG, this.toString());
+        Log.d(TAG, "Task id is " + getTaskId());
 
         Button button1 = findViewById(R.id.button_1);
         button1.setOnClickListener(new View.OnClickListener() {
@@ -29,6 +30,8 @@ public class FirstActivity extends AppCompatActivity {
                 Toast.makeText(FirstActivity.this, "This is a short toast",
                     Toast.LENGTH_SHORT).show();
 
+                Intent intent = new Intent(FirstActivity.this, FirstActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -58,7 +61,6 @@ public class FirstActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String data = "Hi SecondActivity";
-//                Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
 
                 Intent intent = new Intent("com.example.testing.activitytest.ACTION_START");
                 intent.addCategory("com.example.testing.activitytest.MY_CATEGORY");
@@ -140,5 +142,17 @@ public class FirstActivity extends AppCompatActivity {
                 break;
             default:
         }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "onRestart: ");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy: ");
     }
 }

@@ -17,6 +17,11 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: ");
         setContentView(R.layout.activity_main);
 
+        if (savedInstanceState != null) {
+            String tempData = savedInstanceState.getString("data_key");
+            Log.d(TAG, tempData);
+        }
+
         Button startNormalActivity = findViewById(R.id.start_normal_activity);
         Button startDialogActivity = findViewById(R.id.start_dialog_activity);
         
@@ -35,7 +40,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        String tempData = "Foobar";
+        outState.putString("data_key", tempData);
     }
 
     @Override

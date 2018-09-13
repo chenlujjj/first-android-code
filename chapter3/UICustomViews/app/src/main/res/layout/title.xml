@@ -2,7 +2,8 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/title_bg">
 
     <Button
         android:id="@+id/title_back"
@@ -10,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:layout_gravity="center"
+        android:background="@drawable/back_bg"
         android:text="Back"
         android:textColor="#fff"/>
 
@@ -33,6 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:layout_gravity="center"
+        android:background="@drawable/edit_bg"
         android:text="Edit"
         android:textColor="#fff"/>
 
